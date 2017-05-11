@@ -16,6 +16,8 @@ import org.unitils.spring.annotation.SpringBeanByType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertNotNull;
+
 /**
  * Project version repository tests.
  */
@@ -38,7 +40,7 @@ public class ProjectVersionRepositoryTest {
 
         ProjectVersion version = new ProjectVersion("3.0");
         version.setProject(project);
-        repository.add(version);
+        assertNotNull(repository.add(version).getId());
     }
 
 
