@@ -1,0 +1,6 @@
+<!DOCTYPE dataset SYSTEM "../../../../db-schema/database.dtd">
+<dataset>
+    <PROJECT ID="1" NAME="AS Consolidation"/>
+    <PROJECT_VERSION ID="10" NAME="1.0" PROJECT_ID="1"/>
+    <PROJECT_VERSION ID="20" NAME="2.0" PROJECT_ID="1"/>
+</dataset>

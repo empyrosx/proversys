@@ -3,10 +3,11 @@ package com.github.empyrosx.proversys.model;
 import javax.persistence.*;
 
 /**
- * Project entity.
+ * Project version entity.
  */
 @Entity
-public class Project {
+@Table(name = "project_version")
+public class ProjectVersion {
 
     @Id
     @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
@@ -15,26 +16,30 @@ public class Project {
 
     private String name;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id")
+    private Project project;
+
     /**
      * Default constructor.
      */
-    public Project() {
+    public ProjectVersion() {
     }
 
     /**
-     * Constructs new project with given name.
+     * Constructs new project version with given name.
      *
-     * @param name project name
+     * @param name version name
      */
-    public Project(String name) {
+    public ProjectVersion(String name) {
         this.name = name;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public Project setId(long id) {
+    public ProjectVersion setId(long id) {
         this.id = id;
         return this;
     }
@@ -45,5 +50,14 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public ProjectVersion setProject(Project project) {
+        this.project = project;
+        return this;
     }
 }

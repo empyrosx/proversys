@@ -19,8 +19,15 @@ public class ProjectRepositoryJPA implements ProjectRepository {
     private EntityManager entityManager;
 
     @Transactional
-    public Project addProject(Project project) {
+    public Project add(Project project) {
         entityManager.persist(project);
         return project;
+    }
+
+    public Project findByName(String projectName) {
+        String qlString = "from Project where name = :name";
+        return entityManager.createQuery(qlString, Project.class)
+                .setParameter("name", projectName)
+                .getSingleResult();
     }
 }
