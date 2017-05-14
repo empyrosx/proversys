@@ -1,23 +1,14 @@
 package com.github.empyrosx;
 
-import com.github.database.rider.core.DBUnitRule;
-import com.github.database.rider.core.api.connection.ConnectionHolder;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.empyrosx.proversys.model.Project;
 import com.github.empyrosx.proversys.model.ProjectVersion;
 import com.github.empyrosx.proversys.repository.ProjectRepository;
 import com.github.empyrosx.proversys.repository.ProjectVersionRepository;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
