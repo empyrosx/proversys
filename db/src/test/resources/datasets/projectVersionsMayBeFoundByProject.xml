@@ -1,4 +1,4 @@
-<!DOCTYPE dataset SYSTEM "../../../../db-schema/database.dtd">
+<!DOCTYPE dataset SYSTEM "src/test/resources/db-schema/database.dtd">
 <dataset>
     <PROJECT ID="1" NAME="AS Consolidation"/>
     <PROJECT_VERSION ID="10" NAME="1.0" PROJECT_ID="1"/>

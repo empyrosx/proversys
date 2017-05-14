@@ -19,12 +19,14 @@
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
-          p:packagesToScan="com.github.empyrosx.proversys.model">
+          p:packagesToScan="com.github.empyrosx.proversys.model"
+          depends-on="flyway, dtd-generator">
 
         <property name="jpaPropertyMap">
             <map>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>
-                <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}" value="${hibernate.use_sql_comments}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
+                       value="${hibernate.use_sql_comments}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).GENERATE_STATISTICS}" value="true"/>
             </map>
         </property>
@@ -42,4 +44,22 @@
     <tx:annotation-driven/>
 
     <context:component-scan base-package="com.github.empyrosx.proversys.repository.jpa"/>
+
+    <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="locations">
+            <list>
+                <value>db/migration</value>
+            </list>
+        </property>
+        <property name="schemas" value="PUBLIC"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+    <bean id="dtd-generator" class="com.github.empyrosx.proversys.db.DTDGenerator" init-method="init">
+        <constructor-arg value="${database.url}"/>
+        <constructor-arg value="src/test/resources/db-schema/database.dtd"/>
+    </bean>
 </beans>

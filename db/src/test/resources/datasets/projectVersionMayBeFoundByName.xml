@@ -1,0 +1,4 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/db-schema/database.dtd">
+<dataset>
+    <PROJECT_VERSION ID="1" NAME="3.0"/>
+</dataset>

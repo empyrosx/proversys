@@ -1,0 +1,4 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/db-schema/database.dtd">
+<dataset>
+    <PROJECT ID="1" NAME="Web-consolidation"/>
+</dataset>
