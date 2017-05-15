@@ -7,12 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "project_version")
-public class ProjectVersion {
-
-    @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "global_seq")
-    private long id;
+public class ProjectVersion extends BaseEntity {
 
     private String name;
 
@@ -32,16 +27,22 @@ public class ProjectVersion {
      * @param name version name
      */
     public ProjectVersion(String name) {
-        this.name = name;
+        this(0, name, null);
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public ProjectVersion setId(long id) {
+    /**
+     * Constructs new project version with given attributes.
+     *
+     * @param name version name
+     */
+    public ProjectVersion(long id, String name, Project project) {
         this.id = id;
-        return this;
+        this.name = name;
+        this.project = project;
+    }
+
+    public ProjectVersion(long id, String name) {
+        this(id, name, null);
     }
 
     public String getName() {

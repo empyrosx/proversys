@@ -6,12 +6,7 @@ import javax.persistence.*;
  * Project entity.
  */
 @Entity
-public class Project {
-
-    @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "global_seq")
-    private long id;
+public class Project extends BaseEntity {
 
     private String name;
 
@@ -27,16 +22,18 @@ public class Project {
      * @param name project name
      */
     public Project(String name) {
-        this.name = name;
+        this(0, name);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Project setId(long id) {
+    /**
+     * Constructs new project with given id and name.
+     *
+     * @param id project id
+     * @param name project name
+     */
+    public Project(long id, String name) {
         this.id = id;
-        return this;
+        this.name = name;
     }
 
     public String getName() {

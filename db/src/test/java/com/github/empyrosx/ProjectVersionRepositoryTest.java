@@ -42,8 +42,7 @@ public class ProjectVersionRepositoryTest extends AbstractDaoTest {
     @DataSet(cleanBefore = true, value = "datasets/projectVersionMayBeFoundByName.xml")
     public void projectVersionMayBeFoundByName() throws Exception {
         String versionName = "3.0";
-        ProjectVersion expected = new ProjectVersion(versionName);
-        expected.setId(1);
+        ProjectVersion expected = new ProjectVersion(1, versionName);
         assertThat(repository.findByName(versionName), samePropertyValuesAs(expected));
     }
 
@@ -51,11 +50,11 @@ public class ProjectVersionRepositoryTest extends AbstractDaoTest {
     @DataSet(value = "datasets/projectVersionsMayBeFoundByProject.xml")
     public void projectVersionsMayBeFoundByProject() throws Exception {
         String projectName = "AS Consolidation";
-        Project project = new Project(projectName).setId(1);
+        Project project = new Project(1, projectName);
 
-        List<ProjectVersion> expected = new ArrayList<ProjectVersion>();
-        expected.add(new ProjectVersion("1.0").setId(10).setProject(project));
-        expected.add(new ProjectVersion("2.0").setId(20).setProject(project));
+        List<ProjectVersion> expected = new ArrayList<>();
+        expected.add(new ProjectVersion(10, "1.0", project));
+        expected.add(new ProjectVersion(20, "2.0", project));
         assertThat(repository.findByProjectName(projectName), samePropertyValuesAs(expected));
     }
 
