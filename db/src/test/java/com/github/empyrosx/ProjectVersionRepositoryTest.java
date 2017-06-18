@@ -28,27 +28,26 @@ public class ProjectVersionRepositoryTest extends AbstractDaoTest {
     private ProjectVersionRepository repository;
 
     @Test
-    @DataSet(value = "datasets/projectVersionMayBeAdded.xml", cleanBefore = true)
-    @ExpectedDataSet(value = "datasets/projectVersionMayBeAdded-result.xml", ignoreCols = "id")
-    public void projectVersionMayBeAdded() throws Exception {
+    @DataSet(value = "datasets/projectVersion_add.xml", cleanBefore = true)
+    @ExpectedDataSet(value = "datasets/projectVersion_add-result.xml", ignoreCols = "id")
+    public void add() throws Exception {
         Project project = projectRepository.findByName("Web-consolidation");
         ProjectVersion version = new ProjectVersion("3.0");
         version.setProject(project);
         assertNotNull(repository.add(version).getId());
     }
 
-
     @Test
-    @DataSet(cleanBefore = true, value = "datasets/projectVersionMayBeFoundByName.xml")
-    public void projectVersionMayBeFoundByName() throws Exception {
+    @DataSet(cleanBefore = true, value = "datasets/projectVersion_foundByName.xml")
+    public void foundByName() throws Exception {
         String versionName = "3.0";
         ProjectVersion expected = new ProjectVersion(1, versionName);
         assertThat(repository.findByName(versionName), samePropertyValuesAs(expected));
     }
 
     @Test
-    @DataSet(value = "datasets/projectVersionsMayBeFoundByProject.xml")
-    public void projectVersionsMayBeFoundByProject() throws Exception {
+    @DataSet(value = "datasets/projectVersion_foundByProject.xml")
+    public void foundByProject() throws Exception {
         String projectName = "AS Consolidation";
         Project project = new Project(1, projectName);
 
@@ -57,5 +56,4 @@ public class ProjectVersionRepositoryTest extends AbstractDaoTest {
         expected.add(new ProjectVersion(20, "2.0", project));
         assertThat(repository.findByProjectName(projectName), samePropertyValuesAs(expected));
     }
-
 }

@@ -21,15 +21,15 @@ public class ClientRepositoryTest extends AbstractDaoTest {
 
     @Test
     @DataSet(cleanBefore = true)
-    @ExpectedDataSet(value = "datasets/clientMayBeAdded.xml", ignoreCols = "id")
-    public void clientMayBeAdded() throws Exception {
+    @ExpectedDataSet(value = "datasets/client_add-result.xml", ignoreCols = "id")
+    public void add() throws Exception {
         Client client = new Client("Yaroslavl");
         assertNotNull(repository.add(client).getId());
     }
 
     @Test
-    @DataSet(cleanBefore = true, value = "datasets/clientMayBeFoundByName.xml")
-    public void projectMayBeFoundByName() throws Exception {
+    @DataSet(cleanBefore = true, value = "datasets/client_foundByName.xml")
+    public void foundByName() throws Exception {
         String clientName = "Vologda";
         Client expected = new Client(1, clientName);
         assertThat(repository.findByName(clientName), samePropertyValuesAs(expected));

@@ -17,12 +17,12 @@ import java.sql.SQLException;
  * Base Dao test.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:database-context.xml"})
+@ContextConfiguration({"classpath:spring/spring-db.xml"})
 @Ignore
 public class AbstractDaoTest {
 
     @Autowired
-    protected JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Rule
     public DBUnitRule dbUnitRule = DBUnitRule.instance(new ConnectionHolder() {

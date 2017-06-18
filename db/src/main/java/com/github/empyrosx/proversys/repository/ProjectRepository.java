@@ -2,6 +2,8 @@ package com.github.empyrosx.proversys.repository;
 
 import com.github.empyrosx.proversys.model.Project;
 
+import java.util.List;
+
 /**
  * Project repository.
  */
@@ -21,4 +23,9 @@ public interface ProjectRepository {
      * @param projectName project name
      */
     Project findByName(String projectName);
+
+    /**
+     * Finds all projects.
+     */
+    List<Project> findAll();
 }

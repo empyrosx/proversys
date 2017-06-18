@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * Project repository JPA implementation.
@@ -29,5 +30,12 @@ public class ProjectRepositoryJPA implements ProjectRepository {
         return entityManager.createQuery(qlString, Project.class)
                 .setParameter("name", projectName)
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Project> findAll() {
+        String qlString = "from Project";
+        return entityManager.createQuery(qlString, Project.class)
+                .getResultList();
     }
 }

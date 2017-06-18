@@ -22,15 +22,15 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
 
     @Test
     @DataSet(cleanBefore = true)
-    @ExpectedDataSet(value = "datasets/projectMayBeAdded.xml", ignoreCols = "id")
-    public void projectMayBeAdded() throws Exception {
+    @ExpectedDataSet(value = "datasets/project_add-result.xml", ignoreCols = "id")
+    public void add() throws Exception {
         Project project = new Project("Web-consolidation");
         assertNotNull(repository.add(project).getId());
     }
 
     @Test
-    @DataSet(cleanBefore = true, value = "datasets/projectMayBeFoundByName.xml")
-    public void projectMayBeFoundByName() throws Exception {
+    @DataSet(cleanBefore = true, value = "datasets/project_foundByName.xml")
+    public void foundByName() throws Exception {
         String projectName = "Web-planning";
         Project expected = new Project(1, projectName);
         assertThat(repository.findByName(projectName), samePropertyValuesAs(expected));
