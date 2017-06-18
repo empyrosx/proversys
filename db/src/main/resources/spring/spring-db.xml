@@ -20,7 +20,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:packagesToScan="com.github.empyrosx.proversys.model"
-          depends-on="flyway, dtd-generator">
+          depends-on="flyway">
 
         <property name="jpaPropertyMap">
             <map>
@@ -58,8 +58,8 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
-    <bean id="dtd-generator" class="com.github.empyrosx.proversys.db.DTDGenerator" init-method="init">
-        <constructor-arg value="${database.url}"/>
-        <constructor-arg value="src/test/resources/db-schema/database.dtd"/>
-    </bean>
+    <!--<bean id="dtd-generator" class="com.github.empyrosx.proversys.db.DTDGenerator" init-method="init">-->
+        <!--<constructor-arg value="${database.url}"/>-->
+        <!--<constructor-arg value="src/test/resources/db-schema/database.dtd"/>-->
+    <!--</bean>-->
 </beans>

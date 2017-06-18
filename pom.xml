@@ -12,5 +12,6 @@
     <modules>
         <module>db</module>
         <module>parent</module>
+        <module>web</module>
     </modules>
 </project>
