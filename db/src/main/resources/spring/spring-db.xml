@@ -9,14 +9,6 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Data source and Hibernate -->
-    <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-          p:driverClassName="org.hsqldb.jdbcDriver"
-          p:url="${database.url}"
-          p:username="${database.username}"
-          p:password="${database.password}"/>
-
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:packagesToScan="com.github.empyrosx.proversys.model"
@@ -28,6 +20,7 @@
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
                        value="${hibernate.use_sql_comments}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).GENERATE_STATISTICS}" value="true"/>
+                <!--<entry key="#{T(org.hibernate.cfg.AvailableSettings).DEFAULT_SCHEMA}" value="PUBLIC"/>-->
             </map>
         </property>
 
@@ -46,13 +39,14 @@
     <context:component-scan base-package="com.github.empyrosx.proversys.repository.jpa"/>
 
     <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+        <!--<property name="baselineOnMigrate" value="true" />-->
         <property name="dataSource" ref="dataSource"/>
         <property name="locations">
             <list>
-                <value>db/migration</value>
+                <value>${migration.location}</value>
             </list>
         </property>
-        <property name="schemas" value="PUBLIC"/>
+        <!--<property name="schemas" value="public"/>-->
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -62,4 +56,27 @@
         <!--<constructor-arg value="${database.url}"/>-->
         <!--<constructor-arg value="src/test/resources/db-schema/database.dtd"/>-->
     <!--</bean>-->
+
+    <beans profile="hsqldb">
+        <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
+
+        <!--no pooling-->
+        <bean id="dataSource"
+              class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+              p:driverClassName="org.hsqldb.jdbcDriver"
+              p:url="${database.url}"
+              p:username="${database.username}"
+              p:password="${database.password}"/>
+    </beans>
+
+    <beans profile="postgres">
+        <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
+
+        <bean id="dataSource"
+              class="org.apache.tomcat.jdbc.pool.DataSource"
+              p:driverClassName="org.postgresql.Driver"
+              p:url="${database.url}"
+              p:username="${database.username}"
+              p:password="${database.password}"/>
+    </beans>
 </beans>

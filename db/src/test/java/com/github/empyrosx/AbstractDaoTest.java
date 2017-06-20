@@ -7,11 +7,14 @@ import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import static com.github.empyrosx.proversys.db.Profiles.HSQLDB;
 
 /**
  * Base Dao test.
@@ -19,6 +22,7 @@ import java.sql.SQLException;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-db.xml"})
 @Ignore
+@ActiveProfiles({HSQLDB})
 public class AbstractDaoTest {
 
     @Autowired
