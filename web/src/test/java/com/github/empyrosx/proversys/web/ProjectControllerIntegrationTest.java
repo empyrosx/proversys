@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -28,7 +26,6 @@ import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -38,9 +35,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for project controller.
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration({"classpath:/spring/spring-mvc.xml"})
+@ContextConfiguration({"classpath:/spring/spring-mvc.xml", "classpath:/spring/spring-mock.xml"})
 @WebAppConfiguration
-@Configuration
 public class ProjectControllerIntegrationTest {
 
     private static final CharacterEncodingFilter CHARACTER_ENCODING_FILTER = new CharacterEncodingFilter();
@@ -57,6 +53,9 @@ public class ProjectControllerIntegrationTest {
     @Autowired
     private WebApplicationContext context;
 
+    @Autowired
+    private ProjectService service;
+
     private List<Project> projects = asList(new Project("Web-consolidation"),
             new Project("Web-planning"));
 
@@ -71,13 +70,8 @@ public class ProjectControllerIntegrationTest {
                 .mockMvcSetup(mockMvc)
                 .useMockMvcForHosts("proversys.ru")
                 .build();
-    }
 
-    @Bean
-    public ProjectService getService() {
-        ProjectService result = mock(ProjectService.class);
-        when(result.findAll()).thenReturn(projects);
-        return result;
+        when(service.findAll()).thenReturn(projects);
     }
 
     @Test
