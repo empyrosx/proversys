@@ -1,4 +1,4 @@
-package com.github.empyrosx.proversys.web;
+package com.github.empyrosx.proversys.rest;
 
 import com.github.empyrosx.proversys.model.Project;
 import com.github.empyrosx.proversys.service.ProjectService;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Tests for project controller.
+ * Tests for project rest controller.
  */
 @RunWith(MockitoJUnitRunner.class)
 public class ProjectRestControllerTest {

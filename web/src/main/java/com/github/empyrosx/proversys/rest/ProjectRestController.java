@@ -1,4 +1,4 @@
-package com.github.empyrosx.proversys.web;
+package com.github.empyrosx.proversys.rest;
 
 import com.github.empyrosx.proversys.model.Project;
 import com.github.empyrosx.proversys.service.ProjectService;

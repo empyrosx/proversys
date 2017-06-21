@@ -5,7 +5,7 @@
 Projects available:
 
 <ul>
-<#list projectList as project>
+<#list projects as project>
     <li>${project_index + 1}. ${project.name}</li>
 </#list>
 </ul>

@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Ajax controller for projects.
  */
 @Controller
-@RequestMapping(path = "/projects")
-public class ProjectAjaxController {
+@RequestMapping
+public class ProjectController {
 
     private ProjectService service;
 
-    public ProjectAjaxController(ProjectService service) {
+    public ProjectController(ProjectService service) {
         this.service = service;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, path = "/projects.htm")
     public String findAll(Model model) {
-        model.addAttribute("projectList", service.findAll());
-        return "projectList";
+        model.addAttribute("projects", service.findAll());
+        return "projects";
     }
 }
