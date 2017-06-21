@@ -13,7 +13,9 @@
     <mvc:default-servlet-handler/>
 
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
-          p:suffix=".ftl"/>
+          p:suffix=".ftl"
+          p:contentType="text/html;charset=UTF-8"
+    />
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/views/"/>
