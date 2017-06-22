@@ -8,6 +8,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -34,6 +37,16 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
         String projectName = "Web-planning";
         Project expected = new Project(1, projectName);
         assertThat(repository.findByName(projectName), samePropertyValuesAs(expected));
+    }
+
+    @Test
+    @DataSet(cleanBefore = true, value = "datasets/project_foundAll.xml")
+    public void foundAll() throws Exception {
+        List<Project> expected = new ArrayList<>();
+        expected.add(new Project("Web-planning"));
+        expected.add(new Project("Web-consolidation"));
+        expected.add(new Project("Web-budget"));
+        assertThat(repository.findAll(), samePropertyValuesAs(expected));
     }
 
     @Test
