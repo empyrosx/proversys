@@ -29,4 +29,9 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Project add(Project project) {
+        return repository.save(project);
+    }
 }

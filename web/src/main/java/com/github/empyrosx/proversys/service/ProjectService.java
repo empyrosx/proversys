@@ -13,4 +13,10 @@ public interface ProjectService {
      * Returns all projects.
      */
     List<Project> findAll();
+
+    /**
+     * Adds new project.
+     * @param project project instance
+     */
+    Project add(Project project);
 }
