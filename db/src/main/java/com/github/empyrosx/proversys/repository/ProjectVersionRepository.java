@@ -1,13 +1,18 @@
 package com.github.empyrosx.proversys.repository;
 
 import com.github.empyrosx.proversys.model.ProjectVersion;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Project version repository.
  */
-public interface ProjectVersionRepository {
+@Repository
+@Transactional(readOnly = true)
+public interface ProjectVersionRepository extends JpaRepository<ProjectVersion, Long> {
 
     /**
      * Adds project version to repository.
@@ -15,7 +20,8 @@ public interface ProjectVersionRepository {
      * @param version version instance
      * @return added project version
      */
-    ProjectVersion add(ProjectVersion version);
+    @Transactional
+    ProjectVersion save(ProjectVersion version);
 
     /**
      * Finds project version with given name.

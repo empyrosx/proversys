@@ -24,7 +24,7 @@ public class ClientRepositoryTest extends AbstractDaoTest {
     @ExpectedDataSet(value = "datasets/client_add-result.xml", ignoreCols = "id")
     public void add() throws Exception {
         Client client = new Client("Yaroslavl");
-        assertNotNull(repository.add(client).getId());
+        assertNotNull(repository.save(client).getId());
     }
 
     @Test

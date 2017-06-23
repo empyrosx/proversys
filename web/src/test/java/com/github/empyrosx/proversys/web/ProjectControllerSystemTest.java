@@ -43,8 +43,8 @@ public class ProjectControllerSystemTest {
     @Before
     public void init() {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-        repository.add(new Project("Web-consolidation"));
-        repository.add(new Project("Web-planning"));
+        repository.save(new Project("Web-consolidation"));
+        repository.save(new Project("Web-planning"));
     }
 
     @Test

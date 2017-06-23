@@ -28,7 +28,7 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
     @ExpectedDataSet(value = "datasets/project_add-result.xml", ignoreCols = "id")
     public void add() throws Exception {
         Project project = new Project("Web-consolidation");
-        assertNotNull(repository.add(project).getId());
+        assertNotNull(repository.save(project).getId());
     }
 
     @Test

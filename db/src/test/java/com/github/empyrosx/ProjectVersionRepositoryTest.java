@@ -34,7 +34,7 @@ public class ProjectVersionRepositoryTest extends AbstractDaoTest {
         Project project = projectRepository.findByName("Web-consolidation");
         ProjectVersion version = new ProjectVersion("3.0");
         version.setProject(project);
-        assertNotNull(repository.add(version).getId());
+        assertNotNull(repository.save(version).getId());
     }
 
     @Test

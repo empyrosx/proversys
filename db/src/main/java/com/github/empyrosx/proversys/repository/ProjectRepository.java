@@ -1,13 +1,16 @@
 package com.github.empyrosx.proversys.repository;
 
 import com.github.empyrosx.proversys.model.Project;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Project repository.
  */
-public interface ProjectRepository {
+@Repository
+@Transactional(readOnly = true)
+public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     /**
      * Adds project to repository.
@@ -15,7 +18,8 @@ public interface ProjectRepository {
      * @param project project instance
      * @return adder project
      */
-    Project add(Project project);
+    @Transactional
+    Project save(Project project);
 
     /**
      * Finds project with given name.
@@ -23,9 +27,4 @@ public interface ProjectRepository {
      * @param projectName project name
      */
     Project findByName(String projectName);
-
-    /**
-     * Finds all projects.
-     */
-    List<Project> findAll();
 }
