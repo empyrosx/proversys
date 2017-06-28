@@ -41,7 +41,7 @@ public class ProjectServiceImplTest {
     @Test
     public void projectMayBeAdded() throws Exception {
         Project addingProject = new Project("Web-consolidation");
-        Project expected = new Project(1, "Web-consolidation");
+        Project expected = new Project(1L, "Web-consolidation");
 
         when(repository.save(addingProject)).thenReturn(expected);
 

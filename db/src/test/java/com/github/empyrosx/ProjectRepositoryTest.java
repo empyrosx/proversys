@@ -35,7 +35,7 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
     @DataSet(cleanBefore = true, value = "datasets/project_foundByName.xml")
     public void foundByName() throws Exception {
         String projectName = "Web-planning";
-        Project expected = new Project(1, projectName);
+        Project expected = new Project(1L, projectName);
         assertThat(repository.findByName(projectName), samePropertyValuesAs(expected));
     }
 

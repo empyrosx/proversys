@@ -11,13 +11,13 @@ public class BaseEntity {
     @Id
     @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "global_seq")
-    protected long id;
+    protected Long id;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public BaseEntity setId(long id) {
+    public BaseEntity setId(Long id) {
         this.id = id;
         return this;
     }

@@ -22,7 +22,7 @@ public class Project extends BaseEntity {
      * @param name project name
      */
     public Project(String name) {
-        this(0, name);
+        this(null, name);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Project extends BaseEntity {
      * @param id project id
      * @param name project name
      */
-    public Project(long id, String name) {
+    public Project(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -42,5 +42,13 @@ public class Project extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

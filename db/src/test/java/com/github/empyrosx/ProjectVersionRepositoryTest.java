@@ -49,7 +49,7 @@ public class ProjectVersionRepositoryTest extends AbstractDaoTest {
     @DataSet(value = "datasets/projectVersion_foundByProject.xml")
     public void foundByProject() throws Exception {
         String projectName = "AS Consolidation";
-        Project project = new Project(1, projectName);
+        Project project = new Project(1L, projectName);
 
         List<ProjectVersion> expected = new ArrayList<>();
         expected.add(new ProjectVersion(10, "1.0", project));
