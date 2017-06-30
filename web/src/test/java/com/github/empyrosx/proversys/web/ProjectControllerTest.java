@@ -19,9 +19,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.collection.IsMapContaining.hasEntry;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -55,10 +54,9 @@ public class ProjectControllerTest {
     }
 
     @Test
-    public void requestForLibraryIsSuccessfullyProcessedWithAvailableBooksList() throws Exception {
-        this.mockMvc.perform(get("/projects.htm"))
-                .andExpect(status().isOk())
-                .andExpect(model().attribute("projects", equalTo(projects)))
-                .andExpect(forwardedUrl("projects"));
+    public void requestForAddingNewProjectIsAvailable() throws Exception {
+        this.mockMvc.perform(post("/projects"))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("projects"));
     }
 }
