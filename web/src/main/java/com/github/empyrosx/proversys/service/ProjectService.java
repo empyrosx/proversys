@@ -19,4 +19,17 @@ public interface ProjectService {
      * @param project project instance
      */
     Project add(Project project);
+
+    /**
+     * Finds project by id.
+     * @param id project identifier
+     * @return {@link Project}
+     */
+    Project findById(long id);
+
+    /**
+     * Deletes project by id.
+     * @param id project identifier
+     */
+    void delete(long id);
 }

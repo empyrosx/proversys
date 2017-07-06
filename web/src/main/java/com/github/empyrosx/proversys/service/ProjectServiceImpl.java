@@ -22,10 +22,7 @@ public class ProjectServiceImpl implements ProjectService {
         this.repository = repository;
     }
 
-    /**
-     * Returns all projects.
-     * @return
-     */
+    @Override
     public List<Project> findAll() {
         return repository.findAll();
     }
@@ -33,5 +30,15 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project add(Project project) {
         return repository.save(project);
+    }
+
+    @Override
+    public Project findById(long id) {
+        return repository.findOne(id);
+    }
+
+    @Override
+    public void delete(long id) {
+        repository.delete(id);
     }
 }

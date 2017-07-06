@@ -2,10 +2,11 @@ package com.github.empyrosx.proversys.web;
 
 import com.github.empyrosx.proversys.model.Project;
 import com.github.empyrosx.proversys.service.ProjectService;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 /**
  * Ajax controller for projects.
@@ -20,16 +21,26 @@ public class ProjectController {
         this.service = service;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String findAll(Model model) {
-        model.addAttribute("projects", service.findAll());
-        return "projectsView";
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Collection<Project> findAll() {
+        return service.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String addProject(Project project) {
         service.add(project);
-        return "redirect:projects";
+        return "redirect:projectList";
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Project get(@PathVariable("id") long id) {
+        return service.findById(id);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") long id) {
+        service.delete(id);
+    }
 }

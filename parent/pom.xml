@@ -30,6 +30,9 @@
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <tomcat.version>8.5.14</tomcat.version>
         <unitils.version>3.3</unitils.version>
+        <webjars-jquery.version>2.1.4</webjars-jquery.version>
+        <webjars-bootstrap.version>3.3.5</webjars-bootstrap.version>
+        <webjars-datatables.version>1.10.9</webjars-datatables.version>
     </properties>
 
     <dependencyManagement>
@@ -189,6 +192,21 @@
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-jdbc</artifactId>
                 <version>${tomcat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>${webjars-jquery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${webjars-bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>datatables</artifactId>
+                <version>${webjars-datatables.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

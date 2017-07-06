@@ -32,7 +32,7 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
     }
 
     @Test
-    @DataSet(cleanBefore = true, value = "datasets/project_foundByName.xml")
+    @DataSet(cleanBefore = true, value = "datasets/project_foundBy.xml")
     public void foundByName() throws Exception {
         String projectName = "Web-planning";
         Project expected = new Project(1L, projectName);
@@ -40,13 +40,21 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
     }
 
     @Test
-    @DataSet(cleanBefore = true, value = "datasets/project_foundAll.xml")
+    @DataSet(cleanBefore = true, value = "datasets/project_All.xml")
     public void foundAll() throws Exception {
         List<Project> expected = new ArrayList<>();
         expected.add(new Project("Web-planning"));
         expected.add(new Project("Web-consolidation"));
         expected.add(new Project("Web-budget"));
         assertThat(repository.findAll(), samePropertyValuesAs(expected));
+    }
+
+    @Test
+    @DataSet(cleanBefore = true, value = "datasets/project_foundBy.xml")
+    public void foundByID() throws Exception {
+        Long projectID = 1L;
+        Project expected = new Project(projectID, "Web-planning");
+        assertThat(repository.findOne(projectID), samePropertyValuesAs(expected));
     }
 
     @Test
@@ -65,8 +73,9 @@ public class ProjectRepositoryTest extends AbstractDaoTest {
     }
 
     @Test
-    @Ignore
+    @DataSet(cleanBefore = true, value = "datasets/project_All.xml")
+    @ExpectedDataSet(value = "datasets/project_delete-result.xml", ignoreCols = "id")
     public void projectMayBeDeleted() throws Exception {
-
+        repository.delete(3L);
     }
 }

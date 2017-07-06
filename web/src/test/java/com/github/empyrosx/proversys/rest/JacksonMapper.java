@@ -38,7 +38,7 @@ public class JacksonMapper extends ObjectMapper {
         try {
             return getMapper().writeValueAsString(value);
         } catch (JsonProcessingException e) {
-            throw new IllegalStateException("Invalid toJson to JSON:\n'" + value + "'", e);
+            throw new IllegalStateException("Invalid value to JSON:\n'" + value + "'", e);
         }
     }
 }
