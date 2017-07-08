@@ -11,9 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping
 public class RootController {
 
-    @RequestMapping(path = "/projectList", method = RequestMethod.GET)
+    @RequestMapping(path = "/projectsList", method = RequestMethod.GET)
     public String getProjectsView() {
         return "projectsView";
+    }
+
+    @RequestMapping(path = "/clientsList", method = RequestMethod.GET)
+    public String getClientView() {
+        return "clientsView";
     }
 
 }

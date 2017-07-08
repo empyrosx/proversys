@@ -8,6 +8,9 @@
 <h1>Hi, User!</h1>
 
 <p>
-<a href="projectList">Project list</a>
+<ul>
+    <li><a href="projectsList">Project list</a></li>
+    <li><a href="clientsList">Client list</a></li>
+</ul>
 </p>
 </body>

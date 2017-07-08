@@ -1,7 +1,7 @@
 package com.github.empyrosx.proversys.web;
 
-import com.github.empyrosx.proversys.model.Project;
-import com.github.empyrosx.proversys.service.ProjectService;
+import com.github.empyrosx.proversys.model.Client;
+import com.github.empyrosx.proversys.service.ClientService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,30 +11,30 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 /**
- * Ajax controller for projects.
+ * Ajax controller for clients.
  */
 @RestController
-@RequestMapping(path = "/projects")
-public class ProjectController {
+@RequestMapping(path = "/clients")
+public class ClientController {
 
-    private ProjectService service;
+    private ClientService service;
 
-    public ProjectController(ProjectService service) {
+    public ClientController(ClientService service) {
         this.service = service;
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Project> findAll() {
+    public Collection<Client> findAll() {
         return service.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void addProject(Project project) {
-        service.add(project);
+    public void addClient(Client client) {
+        service.add(client);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Project get(@PathVariable("id") long id) {
+    public Client get(@PathVariable("id") long id) {
         return service.findById(id);
     }
 

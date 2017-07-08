@@ -11,7 +11,7 @@
             <h3>Project list</h3>
 
             <div class="view-box">
-                <a class="btn btn-sm btn-info" id="add">Add project</a>
+                <a class="btn btn-sm btn-info" id="add">Add client</a>
 
                 <table class="table table-striped display" id="datatable">
                     <thead>
@@ -63,6 +63,6 @@
 <script type="text/javascript" src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="webjars/datatables/1.10.9/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="resources/js/datatablesUtil.js"></script>
-<script type="text/javascript" src="resources/js/projectDatatables.js"></script>
+<script type="text/javascript" src="resources/js/clientDatatables.js"></script>
 
 </html>

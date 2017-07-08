@@ -5,4 +5,9 @@
     <bean id="projectService" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="com.github.empyrosx.proversys.service.ProjectService"/>
     </bean>
+
+    <bean id="clientService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.github.empyrosx.proversys.service.ClientService"/>
+    </bean>
+
 </beans>
