@@ -26,25 +26,25 @@ public class DTDGenerator {
 
     public void init() throws ClassNotFoundException {
         // database connection
-//        Connection jdbcConnection;
-//        try {
-//            jdbcConnection = DriverManager.getConnection(databaseURL);
-//            IDatabaseConnection connection = new DatabaseConnection(jdbcConnection);
-//
-//            // write DTD file
-//            IDataSet dataSet = connection.createDataSet();
-//            String[] tableNames = dataSet.getTableNames();
-//            List<String> workTables = new ArrayList<>();
-//            for (String tableName : tableNames) {
-//                if (!tableName.equals("SCHEMA_VERSION")) {
-//                    workTables.add(tableName);
-//                }
-//            }
-//
-//            dataSet = connection.createDataSet(workTables.toArray(new String[]{}));
-//            FlatDtdDataSet.write(dataSet, new FileOutputStream(dtdPath));
-//        } catch (Exception e) {
-//            throw new RuntimeException("Exception while generating DTD schema", e);
-//        }
+        Connection jdbcConnection;
+        try {
+            jdbcConnection = DriverManager.getConnection(databaseURL);
+            IDatabaseConnection connection = new DatabaseConnection(jdbcConnection);
+
+            // write DTD file
+            IDataSet dataSet = connection.createDataSet();
+            String[] tableNames = dataSet.getTableNames();
+            List<String> workTables = new ArrayList<>();
+            for (String tableName : tableNames) {
+                if (!tableName.equals("SCHEMA_VERSION")) {
+                    workTables.add(tableName);
+                }
+            }
+
+            dataSet = connection.createDataSet(workTables.toArray(new String[]{}));
+            FlatDtdDataSet.write(dataSet, new FileOutputStream(dtdPath));
+        } catch (Exception e) {
+            throw new RuntimeException("Exception while generating DTD schema", e);
+        }
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Implementation class for client service.
+ * Implementation class for clients service.
  */
 @Service
 public class ClientServiceImpl implements ClientService {

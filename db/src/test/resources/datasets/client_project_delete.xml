@@ -1,0 +1,10 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/db-schema/database.dtd">
+<dataset>
+    <CLIENT ID="1" NAME="Yaroslavl"/>
+    <CLIENT ID="2" NAME="Vologda"/>
+
+    <PROJECT ID="2" NAME="Web-consolidation"/>
+
+    <CLIENT_PROJECT ID="1" CLIENT_ID="1" PROJECT_ID="2"/>
+    <CLIENT_PROJECT ID="2" CLIENT_ID="2" PROJECT_ID="2"/>
+</dataset>

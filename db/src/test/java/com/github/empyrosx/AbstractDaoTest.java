@@ -20,7 +20,7 @@ import static com.github.empyrosx.proversys.db.Profiles.HSQLDB;
  * Base Dao test.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-db.xml"})
+@ContextConfiguration({"classpath:spring/spring-db.xml", "classpath:spring/spring-test-db.xml"})
 @Ignore
 @ActiveProfiles({HSQLDB})
 public class AbstractDaoTest {

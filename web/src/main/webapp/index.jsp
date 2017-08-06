@@ -9,8 +9,9 @@
 
 <p>
 <ul>
-    <li><a href="projectsList">Project list</a></li>
-    <li><a href="clientsList">Client list</a></li>
+    <li><a href="projectsList">Projects</a></li>
+    <li><a href="clientsList">Clients</a></li>
+    <li><a href="clientProjectsList">Client projects</a></li>
 </ul>
 </p>
 </body>

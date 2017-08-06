@@ -17,8 +17,12 @@ public class RootController {
     }
 
     @RequestMapping(path = "/clientsList", method = RequestMethod.GET)
-    public String getClientView() {
+    public String getClientsView() {
         return "clientsView";
     }
 
+    @RequestMapping(path = "/clientProjectsList", method = RequestMethod.GET)
+    public String getClientProjectsView() {
+        return "clientProjectsView";
+    }
 }

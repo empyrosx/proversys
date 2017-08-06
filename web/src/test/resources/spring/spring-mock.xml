@@ -10,4 +10,8 @@
         <constructor-arg value="com.github.empyrosx.proversys.service.ClientService"/>
     </bean>
 
+    <bean id="clientProjectsService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.github.empyrosx.proversys.service.ClientProjectsService"/>
+    </bean>
+
 </beans>
