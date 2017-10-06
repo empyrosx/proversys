@@ -1,5 +1,7 @@
-image:https://travis-ci.org/empyrosx/proversys.svg[Build Status (Travis CI), link=https://travis-ci.org/empyrosx/proversys]
-image:https://coveralls.io/repos/empyrosx/proversys/badge.png[Coverage, link=https://coveralls.io/r/empyrosx/proversys]
+[![Build Status](https://travis-ci.org/empyrosx/proversys.png?branch=master)]
+(https://travis-ci.org/empyrosx/proversys)
+[![Coverage Status](https://coveralls.io/repos/github/empyrosx/proversys/badge.svg?branch=master)]
+(https://coveralls.io/github/empyrosx/proversys?branch=master)
 
 # proversys
 Project version system.
